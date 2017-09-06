@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "naught start --node-args \"\" --worker-count 1 --daemon-mode false --ipc-file run/server.ipc --pid-file run/server.pid --log run/server.log --stdout run/server.out.log --stderr run/server.err.log --max-log-size 10485760 server.js",
+    "devstart": "nodemon --exec 'naught start --node-args \"\" --worker-count 1 --daemon-mode false --remove-old-ipc true --ipc-file run/server.ipc --pid-file run/server.pid --log run/server.log --stdout run/server.out.log --stderr run/server.err.log --max-log-size 10485760 server.js'",
+    "stop": "naught stop --timeout 35 --pid-file run/server.pid run/server.ipc",
+    "status": "naught status run/server.ipc",
+    "deploy": "naught deploy --timeout 35 run/server.ipc",
+    "rundocker": "docker build -t server .; docker run -i -p 4001:4000 server"
+  },
+  "dependencies": {
+    "firestarter": "^0.1.57"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
