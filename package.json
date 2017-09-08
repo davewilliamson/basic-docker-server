@@ -9,7 +9,7 @@
     "stop": "naught stop --timeout 35 --pid-file run/server.pid run/server.ipc",
     "status": "naught status run/server.ipc",
     "deploy": "naught deploy --timeout 35 run/server.ipc",
-    "rundocker": "docker build -t server .; docker run -i -p 4001:4000 server"
+    "rundocker": "docker build -t server .; docker run --name='server' -i -p 4001:4000 server"
   },
   "dependencies": {
     "firestarter": "^0.1.57"
