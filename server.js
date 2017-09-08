@@ -1,20 +1,30 @@
 'use strict';
 
-const firestarter = require('firestarter')({
+const firestarter = require('../firestarter')({
     port: 4000,
+    spdyPort: 4443,
     shutdownTimeout: 8,
     startupTimeout: 8,
     maxConnectionTime: 4,
     maxSocketTime: 4,
+    proxyProtocol: true,
     exUser: {
-        switchOnReady: true,
+        switchOnReady: false,
         targetUser: 'node',
         targetGroup: 'node'
     },
     memwatch: {
         enabled: false
     },
-    proxyProtocol: false,
+    "spdyEnabled": false,
+    "spdyOptions": {
+        "keyFile": "/keys/blacked-key.pem",
+        "certFile": "/keys/blacked-cert.pem",
+        "caFile": "/keys/alphaSSL.crt",
+        "windowSize": 1048576,
+        "plain": false,
+        "ssl": true
+    },
     name: 'TEST'
 });
 
